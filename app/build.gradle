@@ -13,6 +13,7 @@ android {
     }
 
     useLibrary 'org.apache.http.legacy'
+
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.aigoule.starapp"
@@ -94,7 +95,6 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.1.0'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation 'fm.jiecao:jiecaovideoplayer:5.5.4'
-
     implementation project(path: ':aigoucailib2019')
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'
     implementation 'com.squareup.okio:okio:1.14.0'
