@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:background="#201f1f"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="#343434"
+        android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:textColor="#878787"
+            android:padding="10dp"
+            android:text="会员中心"
+            android:textSize="13sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+        <TextView
+            android:clickable="true"
+            android:focusable="true"
+            android:background="@drawable/selector_tv_bg"
+            android:layout_marginLeft="15dp"
+            android:id="@+id/tv_account"
+            android:textColor="#878787"
+            android:padding="10dp"
+            android:text="账户中心"
+            android:textSize="15sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:clickable="true"
+            android:focusable="true"
+            android:background="@drawable/selector_tv_bg"
+            android:layout_marginLeft="15dp"
+            android:id="@+id/tv_personset"
+            android:textColor="#878787"
+            android:padding="10dp"
+            android:text="个人设置"
+            android:textSize="15sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:clickable="true"
+            android:focusable="true"
+            android:background="@drawable/selector_tv_bg"
+            android:layout_marginLeft="15dp"
+            android:id="@+id/tv_inviterecords"
+            android:textColor="#878787"
+            android:padding="10dp"
+            android:text="邀请记录"
+            android:textSize="15sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:clickable="true"
+            android:focusable="true"
+            android:background="@drawable/selector_tv_bg"
+            android:layout_marginLeft="15dp"
+            android:id="@+id/tv_playRecords"
+            android:textColor="#878787"
+            android:padding="10dp"
+            android:text="播放记录"
+            android:textSize="15sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+        <TextView
+            android:visibility="gone"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="@drawable/selector_tv_bg"
+            android:layout_marginLeft="15dp"
+            android:id="@+id/tv_shoucangRecords"
+            android:textColor="#878787"
+            android:padding="10dp"
+            android:text="收藏记录"
+            android:textSize="15sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:clickable="true"
+            android:focusable="true"
+            android:background="@drawable/selector_tv_bg"
+            android:layout_marginLeft="15dp"
+            android:id="@+id/tv_loginout"
+            android:textColor="#878787"
+            android:padding="10dp"
+            android:text="退出登录"
+            android:textSize="15sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+</LinearLayout>
+
+
+
+    <FrameLayout
+        android:background="#201f1f"
+        android:id="@+id/view_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+</LinearLayout>
+
+</ScrollView>

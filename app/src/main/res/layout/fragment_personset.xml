@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_marginBottom="@dimen/dimen_50"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="#343434"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:textColor="#878787"
+            android:padding="10dp"
+            android:text="基础信息"
+            android:textSize="13sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:layout_marginBottom="@dimen/dimen_60"
+            android:layout_marginTop="@dimen/dimen_20"
+            android:layout_marginRight="@dimen/dimen_20"
+            android:layout_marginLeft="@dimen/dimen_20"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:textSize="14sp"
+                android:text="密码"
+                android:textColor="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+            <EditText
+                android:textSize="15sp"
+                android:digits="0123456789qwertyuioplkjhgfdsazxcvbnm"
+                android:lines="1"
+                android:maxLength="20"
+                android:gravity="center_vertical"
+                android:layout_marginTop="@dimen/dimen_5"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:id="@+id/editext_psw"
+                android:background="@drawable/editext_bg"/>
+
+
+            <TextView
+                android:layout_marginTop="@dimen/dimen_5"
+                android:textSize="14sp"
+                android:text="手机号码"
+                android:textColor="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:inputType="phone|number"
+                android:textSize="15sp"
+                android:id="@+id/editext_phone"
+                android:lines="1"
+                android:maxLength="20"
+                android:gravity="center_vertical"
+                android:layout_marginTop="@dimen/dimen_5"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/editext_bg"/>
+            <TextView
+                android:layout_marginTop="@dimen/dimen_5"
+                android:textSize="14sp"
+                android:text="QQ"
+                android:textColor="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:inputType="phone|number"
+                android:textSize="15sp"
+                android:id="@+id/editext_qq"
+                android:digits="0123456789"
+                android:lines="1"
+                android:maxLength="20"
+                android:gravity="center_vertical"
+                android:layout_marginTop="@dimen/dimen_5"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/editext_bg"/>
+
+
+            <TextView
+                android:layout_marginTop="@dimen/dimen_5"
+                android:textSize="14sp"
+                android:text="email"
+                android:textColor="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:inputType="textEmailAddress"
+                android:textSize="15sp"
+                android:id="@+id/editext_email"
+                android:lines="1"
+                android:maxLength="20"
+                android:gravity="center_vertical"
+                android:layout_marginTop="@dimen/dimen_5"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/editext_bg"/>
+
+
+            <Button
+                android:id="@+id/bt_makesure"
+                android:textColor="@color/white"
+                android:text="保存"
+                android:background="@color/rb_yellow"
+                android:layout_marginTop="@dimen/dimen_30"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+
+        </LinearLayout>
+</LinearLayout>

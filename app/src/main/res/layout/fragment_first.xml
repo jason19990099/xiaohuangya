@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="#201f1f"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:background="#201f1f"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_marginTop="10dp"
+                android:id="@+id/banner_cont"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <com.aigoule.starapp.views.MyGridView
+                android:numColumns="4"
+                android:id="@+id/mygradview_theme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+
+            <RelativeLayout
+                android:padding="@dimen/dimen_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/iv_new_video"
+                    android:layout_centerInParent="true"
+                 android:layout_alignParentLeft="true"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@mipmap/ic_yellow"
+                    />
+
+                <TextView
+                    android:textColor="#a3a3a3"
+                    android:layout_centerInParent="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@+id/iv_new_video"
+                    android:text="123"
+                    android:id="@+id/tv_title_newvideo"
+                    android:textSize="15sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <ImageView
+                    android:id="@+id/iv_new_video_more"
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/iv_more"
+                    />
+            </RelativeLayout>
+
+            <com.aigoule.starapp.views.MyGridView
+                android:id="@+id/gv_newvideo"
+                android:numColumns="3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <RelativeLayout
+                android:padding="@dimen/dimen_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/iv_hot_video"
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@mipmap/ic_yellow"
+                    />
+
+                <TextView
+                    android:textColor="#a3a3a3"
+                    android:layout_centerInParent="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@+id/iv_hot_video"
+                    android:text="123"
+                    android:id="@+id/tv_title_hotvideo"
+                    android:textSize="15sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <ImageView
+                    android:id="@+id/iv_hot_video_more"
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/iv_more"
+                    />
+            </RelativeLayout>
+
+            <com.aigoule.starapp.views.MyGridView
+                android:id="@+id/gv_hotvideo"
+                android:numColumns="3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <RelativeLayout
+                android:visibility="gone"
+                android:padding="@dimen/dimen_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/iv_fiction"
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@mipmap/ic_yellow"
+                    />
+
+                <TextView
+                    android:textColor="#a3a3a3"
+                    android:layout_centerInParent="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@+id/iv_fiction"
+                    android:text="123"
+                    android:id="@+id/tv_fiction"
+                    android:textSize="15sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <ImageView
+                    android:id="@+id/iv_fiction_more"
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/iv_more"
+                    />
+            </RelativeLayout>
+
+            <com.aigoule.starapp.views.MyGridView
+                android:id="@+id/gv_fiction"
+                android:numColumns="2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+            <RelativeLayout
+                android:padding="@dimen/dimen_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/iv_pic"
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@mipmap/ic_yellow"
+                    />
+
+                <TextView
+                    android:textColor="#a3a3a3"
+                    android:layout_centerInParent="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@+id/iv_pic"
+                    android:text="123"
+                    android:id="@+id/tv_pic"
+                    android:textSize="15sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <ImageView
+                    android:id="@+id/iv_pic_more"
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/iv_more"
+                    />
+            </RelativeLayout>
+
+            <com.aigoule.starapp.views.MyGridView
+                android:id="@+id/gv_pic"
+                android:numColumns="3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
