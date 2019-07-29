@@ -1,5 +1,6 @@
 package com.aigoule.starapp.api;
 import com.aigoule.starapp.model.AllpicModel;
+import com.aigoule.starapp.model.AllthemeVideoModel;
 import com.aigoule.starapp.model.AllvideoThemeModel;
 import com.aigoule.starapp.model.AllvidesModel;
 import com.aigoule.starapp.model.BannerModel;
@@ -155,5 +156,16 @@ public interface ApiService {
      */
     @GET("theme/themeDetail/{theme_id}")
     Call<AllvideoThemeModel> getThemeDetail(@Path("theme_id") int id);
+
+
+    /**
+     * 专题全部
+     */
+    @GET("theme/themeMore/{theme_id}")
+    Call<AllthemeVideoModel> getThemeAllDetail(@Path("theme_id") String id);
+
+
+
+
 
 }

@@ -4,6 +4,7 @@ import android.util.Base64;
 
 import androidx.collection.ArrayMap;
 import com.aigoule.starapp.model.AllpicModel;
+import com.aigoule.starapp.model.AllthemeVideoModel;
 import com.aigoule.starapp.model.AllvideoThemeModel;
 import com.aigoule.starapp.model.AllvidesModel;
 import com.aigoule.starapp.model.BannerModel;
@@ -373,4 +374,14 @@ public class HttpRequest {
         call.enqueue(callback);
     }
 
+
+
+    /**
+     *  获取全部专题详情
+     */
+    public void getALLThemeDetail(Object tag,String theme_id, HttpCallback<AllthemeVideoModel> callback) {
+        Call<AllthemeVideoModel> call = mService.getThemeAllDetail(theme_id);
+        putCall(tag, call);
+        call.enqueue(callback);
+    }
 }
