@@ -11,11 +11,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.aigoule.starapp.R;
-import com.aigoule.starapp.activity.MainActivity;
 import com.aigoule.starapp.activity.PersonalvideoActivity;
 import com.aigoule.starapp.model.AllvideoThemeModel;
 import com.squareup.picasso.Picasso;
-
 import java.util.List;
 
 

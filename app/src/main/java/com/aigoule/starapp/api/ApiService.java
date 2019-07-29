@@ -16,6 +16,7 @@ import com.aigoule.starapp.model.PicdetailModel;
 import com.aigoule.starapp.model.PlayRecordsModel;
 import com.aigoule.starapp.model.PlaydetailModel;
 import com.aigoule.starapp.model.RegistMosdel;
+import com.aigoule.starapp.model.ThemeDetailModel;
 import com.aigoule.starapp.model.UpdataModel;
 import com.aigoule.starapp.model.VideoclassdataModel;
 import okhttp3.RequestBody;
@@ -155,7 +156,7 @@ public interface ApiService {
      * 专题详情
      */
     @GET("theme/themeDetail/{theme_id}")
-    Call<AllvideoThemeModel> getThemeDetail(@Path("theme_id") int id);
+    Call<ThemeDetailModel> getThemeDetail(@Path("theme_id") int id);
 
 
     /**

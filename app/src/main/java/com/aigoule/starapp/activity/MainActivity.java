@@ -1,6 +1,7 @@
 package com.aigoule.starapp.activity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -24,6 +25,8 @@ import com.aigoule.starapp.fragment.PicFragment;
 import com.aigoule.starapp.fragment.PlayerFragment;
 import com.aigoule.starapp.fragment.SecondFragment;
 import com.aigoule.starapp.fragment.ThematicVideoFragment;
+import com.aigoule.starapp.utils.LogUtil;
+
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -192,6 +195,12 @@ public class MainActivity extends BaseActivity{
     }
 
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        finish();
+    }
+
     /**
      * 去小説面页
      */
@@ -242,18 +251,11 @@ public class MainActivity extends BaseActivity{
 
 
     @Override
-    protected void onStop() {
-        super.onStop();
+    protected void onDestroy() {
+        super.onDestroy();
         if (EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().unregister(this);
         }
-//        finish();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)

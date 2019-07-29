@@ -18,6 +18,7 @@ import com.aigoule.starapp.R;
 import com.aigoule.starapp.adapter.PlayerAdapter;
 import com.aigoule.starapp.api.HttpCallback;
 import com.aigoule.starapp.api.HttpRequest;
+import com.aigoule.starapp.event.LoginEvent;
 import com.aigoule.starapp.event.playerEvent;
 import com.aigoule.starapp.model.ClassDataModel;
 import com.aigoule.starapp.model.PlaydetailModel;
@@ -120,6 +121,10 @@ public class PlayerFragment extends Fragment {
             HttpRequest.getInstance().getPlayDetail(PlayerFragment.this, play,SharePreferencesUtil.getString(getActivity(), "id", ""),android.os.Build.SERIAL, new HttpCallback<PlaydetailModel>() {
                 @Override
                 public void onSuccess(PlaydetailModel data) {
+                    if (data.getCode()==-1){
+                        EventBus.getDefault().postSticky(new LoginEvent());
+                        Toast.makeText(getActivity(),data.getMessage(),Toast.LENGTH_LONG).show();
+                    }
                     initPlayer(data.getData().getVideo_url(), data.getData().getTitle());
                 }
 

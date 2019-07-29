@@ -216,6 +216,7 @@
         </activity-alias>
 
         <activity
+            android:launchMode="singleTask"
             android:name=".activity.MainActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="portrait"

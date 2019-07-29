@@ -21,6 +21,7 @@ import com.aigoule.starapp.model.PicdetailModel;
 import com.aigoule.starapp.model.PlayRecordsModel;
 import com.aigoule.starapp.model.PlaydetailModel;
 import com.aigoule.starapp.model.RegistMosdel;
+import com.aigoule.starapp.model.ThemeDetailModel;
 import com.aigoule.starapp.model.UpdataModel;
 import com.aigoule.starapp.model.VideoclassdataModel;
 import com.aigoule.starapp.utils.JsonUtil;
@@ -368,8 +369,8 @@ public class HttpRequest {
     /**
      *  获取专题详情
      */
-    public void getThemeDetail(Object tag,int theme_id, HttpCallback<AllvideoThemeModel> callback) {
-        Call<AllvideoThemeModel> call = mService.getThemeDetail(theme_id);
+    public void getThemeDetail(Object tag,int theme_id, HttpCallback<ThemeDetailModel> callback) {
+        Call<ThemeDetailModel> call = mService.getThemeDetail(theme_id);
         putCall(tag, call);
         call.enqueue(callback);
     }
