@@ -89,7 +89,7 @@
                 style="@style/main_button_text"
                 android:duplicateParentState="true"
                 android:focusableInTouchMode="false"
-                android:text="福利图片"/>
+                android:text="专题视频"/>
         </LinearLayout>
         <LinearLayout
             android:id="@+id/ll_makemoney"
@@ -115,7 +115,7 @@
                 style="@style/main_button_text"
                 android:duplicateParentState="true"
                 android:focusableInTouchMode="false"
-                android:text="网赚项目"/>
+                android:text="在线购彩"/>
         </LinearLayout>
         <LinearLayout
             android:id="@+id/ll_mine"

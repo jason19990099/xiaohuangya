@@ -14,6 +14,7 @@ import com.aigoule.starapp.model.FictionModel;
 import com.aigoule.starapp.model.Fpicmodel;
 import com.aigoule.starapp.model.InvitationListModel;
 import com.aigoule.starapp.model.LoginModel;
+import com.aigoule.starapp.model.LotteryLinkModel;
 import com.aigoule.starapp.model.MainTheme;
 import com.aigoule.starapp.model.NewVideosModel;
 import com.aigoule.starapp.model.PicModel;
@@ -382,6 +383,15 @@ public class HttpRequest {
      */
     public void getALLThemeDetail(Object tag,String theme_id, HttpCallback<AllthemeVideoModel> callback) {
         Call<AllthemeVideoModel> call = mService.getThemeAllDetail(theme_id);
+        putCall(tag, call);
+        call.enqueue(callback);
+    }
+
+    /**
+     * 获取彩票链接
+     */
+    public void getLotteryLinlk(Object tag, HttpCallback<LotteryLinkModel> callback) {
+        Call<LotteryLinkModel> call = mService.getLotterylinl();
         putCall(tag, call);
         call.enqueue(callback);
     }

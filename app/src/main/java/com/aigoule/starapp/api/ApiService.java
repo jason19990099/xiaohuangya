@@ -9,6 +9,7 @@ import com.aigoule.starapp.model.FictionModel;
 import com.aigoule.starapp.model.Fpicmodel;
 import com.aigoule.starapp.model.InvitationListModel;
 import com.aigoule.starapp.model.LoginModel;
+import com.aigoule.starapp.model.LotteryLinkModel;
 import com.aigoule.starapp.model.MainTheme;
 import com.aigoule.starapp.model.NewVideosModel;
 import com.aigoule.starapp.model.PicModel;
@@ -167,6 +168,8 @@ public interface ApiService {
 
 
 
+    @GET("lottery_link")
+    Call<LotteryLinkModel> getLotterylinl();
 
 
 }

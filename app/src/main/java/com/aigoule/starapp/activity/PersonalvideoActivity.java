@@ -1,5 +1,6 @@
 package com.aigoule.starapp.activity;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
@@ -38,6 +39,12 @@ public class PersonalvideoActivity extends BaseActivity {
         ButterKnife.bind(this);
         int video_id = getIntent().getIntExtra("video_id", 0);
         getThemeDetail(video_id);
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(PersonalvideoActivity.this,MainActivity.class));
     }
 
 

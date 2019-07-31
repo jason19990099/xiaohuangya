@@ -19,12 +19,10 @@ import java.util.List;
  *  获取某一类视频
  */
 public class PicClassdatAdapter extends BaseAdapter {
-    private Context context;
     private List<PicModel.DataBeanX.DataBean> data;
     private LayoutInflater layoutInflater;
 
     public PicClassdatAdapter(Context context,  List<PicModel.DataBeanX.DataBean> data){
-        this.context=context;
         this.data=data;
         layoutInflater = LayoutInflater.from(context);
     }
