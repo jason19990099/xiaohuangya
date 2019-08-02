@@ -29,14 +29,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
-        <ImageView
+
+
+        <TextView
+            android:text="更多"
             android:id="@+id/iv_more"
+            android:drawableRight="@mipmap/iv_more"
+            android:textColor="@color/rb_yellow"
             android:layout_centerInParent="true"
             android:layout_alignParentRight="true"
+            android:textSize="15sp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/iv_more"
-            />
+            android:layout_height="wrap_content"/>
+
+
+
     </RelativeLayout>
 
     <com.aigoule.starapp.views.MyGridView

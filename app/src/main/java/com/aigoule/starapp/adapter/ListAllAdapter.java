@@ -94,7 +94,8 @@ public class ListAllAdapter extends BaseAdapter {
     }
 
     private class ViewHolder {
-        private ImageView iv_home,iv_more;
+        private ImageView iv_home;
+        private TextView iv_more;
         private TextView tv_title;
         private com.aigoule.starapp.views.MyGridView gv_home;
         private RelativeLayout rl_line;
