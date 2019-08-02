@@ -15,22 +15,14 @@ import androidx.fragment.app.Fragment;
 import com.aigoule.starapp.R;
 import com.aigoule.starapp.api.HttpCallback;
 import com.aigoule.starapp.api.HttpRequest;
-import com.aigoule.starapp.event.GoWhereEvent;
 import com.aigoule.starapp.event.LoginDataEvent;
-import com.aigoule.starapp.fragment.FirstFragment;
-import com.aigoule.starapp.model.BannerModel;
 import com.aigoule.starapp.model.LoginModel;
-import com.aigoule.starapp.model.PlaydetailModel;
 import com.aigoule.starapp.model.UpdataModel;
-import com.aigoule.starapp.views.banners.BannerBaseView;
-import com.aigoule.starapp.views.banners.MainBannerView;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

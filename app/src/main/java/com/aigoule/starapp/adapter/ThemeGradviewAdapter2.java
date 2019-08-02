@@ -1,5 +1,4 @@
 package com.aigoule.starapp.adapter;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,22 +6,25 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.aigoule.starapp.R;
-import com.aigoule.starapp.model.FictionModel;
-import com.aigoule.starapp.utils.LogUtil;
+import com.aigoule.starapp.event.GoWhereEvent;
+import com.aigoule.starapp.model.FirstpageModel;
+import org.greenrobot.eventbus.EventBus;
+import java.util.List;
 
-public class FictionAdapter extends BaseAdapter {
+
+
+public class ThemeGradviewAdapter2 extends BaseAdapter {
+    private List<FirstpageModel.DataBean.ListBean> data;
     private LayoutInflater layoutInflater;
-    private FictionModel data;
-
-    public FictionAdapter(Context context, FictionModel data){
-         this.data=data;
+    public ThemeGradviewAdapter2(List<FirstpageModel.DataBean.ListBean> data, Context context){
+        this.data=data;
         layoutInflater = LayoutInflater.from(context);
+
     }
     @Override
     public int getCount() {
-        return null==data?0:data.getData().getList().size();
+        return null==data?0:data.size();
     }
 
     @Override
@@ -40,21 +42,22 @@ public class FictionAdapter extends BaseAdapter {
         View view = convertView;
         ViewHolder holder;
         if (view == null) {
-            view = layoutInflater.inflate(R.layout.adapter_fiction, parent, false);
+            view = layoutInflater.inflate(R.layout.adaper_them2, parent, false);
             holder = new ViewHolder();
-            holder.tv_fictionname=view.findViewById(R.id.tv_fictionname);
-            holder.ll_fiction=view.findViewById(R.id.ll_fiction);
+            holder.tv_theme=view.findViewById(R.id.tv_theme);
 
+            holder.ll_adapter=view.findViewById(R.id.ll_adapter);
             view.setTag(holder);
+
         }else{
             holder = (ViewHolder)view.getTag();
         }
+        holder.tv_theme.setText(data.get(position).getName());
 
-        holder.tv_fictionname.setText(data.getData().getList().get(position).getTitle());
-        holder.ll_fiction.setOnClickListener(new View.OnClickListener() {
+        holder.ll_adapter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                EventBus.getDefault().postSticky(new GoWhereEvent(1));
             }
         });
 
@@ -62,8 +65,7 @@ public class FictionAdapter extends BaseAdapter {
     }
 
     private class ViewHolder {
-        private TextView tv_fictionname;
-        private LinearLayout ll_fiction;
-
+        private TextView tv_theme;
+        private LinearLayout ll_adapter;
     }
 }

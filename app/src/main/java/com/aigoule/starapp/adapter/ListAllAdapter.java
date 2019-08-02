@@ -75,20 +75,21 @@ public class ListAllAdapter extends BaseAdapter {
         });
 
          holder.gv_home.setNumColumns(data.get(position).getLine());
-         holder.gv_home.setFocusable(false);
+
         if (data.get(position).getPart()==1){
             holder.rl_line.setVisibility(View.GONE);
             ThemeGradviewAdapter adapter = new ThemeGradviewAdapter(data.get(position).getList(),context);
             holder.gv_home.setAdapter(adapter);
         } else if (data.get(position).getPart()==2){
             holder.rl_line.setVisibility(View.GONE);
-            GradviewAdapter2 adapter = new GradviewAdapter2(data.get(position).getList(), context);
+            ThemeGradviewAdapter2 adapter = new ThemeGradviewAdapter2(data.get(position).getList(), context);
             holder.gv_home.setAdapter(adapter);
         }else{
             holder.rl_line.setVisibility(View.VISIBLE);
             GradviewAdapter2 adapter = new GradviewAdapter2(data.get(position).getList(), context);
             holder.gv_home.setAdapter(adapter);
         }
+        holder.gv_home.setFocusable(false);
         return view;
     }
 

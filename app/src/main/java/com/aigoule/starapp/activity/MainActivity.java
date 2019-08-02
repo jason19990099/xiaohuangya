@@ -1,7 +1,6 @@
 package com.aigoule.starapp.activity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -17,7 +16,6 @@ import com.aigoule.starapp.event.GoWhereEvent;
 import com.aigoule.starapp.event.LoginEvent;
 import com.aigoule.starapp.event.PicEvent;
 import com.aigoule.starapp.event.playerEvent;
-import com.aigoule.starapp.fragment.FirstFragment;
 import com.aigoule.starapp.fragment.NewFirstFragment;
 import com.aigoule.starapp.fragment.PersonalCenterFragment;
 import com.aigoule.starapp.fragment.FourthFragment;
@@ -89,7 +87,6 @@ public class MainActivity extends BaseActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-//        FirstFragment firstFragment = new FirstFragment();
         NewFirstFragment firstFragment=new NewFirstFragment();
         SecondFragment secondFragment = new SecondFragment();
 //        ThirdFragment thirdFragment = new ThirdFragment();

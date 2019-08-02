@@ -74,6 +74,7 @@ public class NewFirstFragment extends Fragment {
         HttpRequest.getInstance().getFirstAllmessage(NewFirstFragment.this, new HttpCallback<FirstpageModel>() {
             @Override
             public void onSuccess(FirstpageModel data) {
+                lvAll.setFocusable(false);
                 ListAllAdapter adapter=new ListAllAdapter(data.getData(),getActivity());
                 lvAll.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
