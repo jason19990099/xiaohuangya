@@ -5,6 +5,7 @@
     android:orientation="vertical"
     android:background="#201f1f"
     android:layout_height="match_parent">
+
     <LinearLayout
         android:layout_margin="@dimen/dimen_10"
         android:layout_width="match_parent"
@@ -35,6 +36,10 @@
                 android:layout_height="wrap_content"/>
         </HorizontalScrollView>
     </LinearLayout>
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
     <ScrollView
         android:background="#201f1f"
         android:layout_width="match_parent"
@@ -125,4 +130,5 @@
 
 
      </ScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </LinearLayout>

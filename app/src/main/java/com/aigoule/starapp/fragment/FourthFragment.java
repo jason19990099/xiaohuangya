@@ -10,22 +10,29 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 import android.widget.ZoomButtonsController;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
 import com.aigoule.starapp.R;
 import com.aigoule.starapp.api.HttpCallback;
 import com.aigoule.starapp.api.HttpRequest;
 import com.aigoule.starapp.model.LotteryLinkModel;
+
 import java.lang.reflect.Field;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public class FourthFragment extends Fragment {
+public class FourthFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
     Unbinder unbinder;
     @BindView(R.id.webview)
     WebView webview;
+    @BindView(R.id.swipe_container)
+    SwipeRefreshLayout swipeContainer;
 
     @Nullable
     @Override
@@ -58,6 +65,13 @@ public class FourthFragment extends Fragment {
 
         webview.requestFocus();
         webview.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
+
+        swipeContainer.setOnRefreshListener(FourthFragment.this);
+        swipeContainer.setColorSchemeResources(android.R.color.holo_orange_dark,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);
+
         getLotterylink();
         return view;
     }
@@ -65,11 +79,11 @@ public class FourthFragment extends Fragment {
     /**
      * 获取彩票连接
      */
-    private void getLotterylink(){
+    private void getLotterylink() {
         HttpRequest.getInstance().getLotteryLinlk(FourthFragment.this, new HttpCallback<LotteryLinkModel>() {
             @Override
             public void onSuccess(LotteryLinkModel data) {
-                String url=data.getData();
+                String url = data.getData();
                 webview.loadUrl(url);
                 setZoomControlGone(webview);
                 webview.setWebViewClient(new MyWebViewClient());
@@ -84,6 +98,12 @@ public class FourthFragment extends Fragment {
 
     }
 
+    @Override
+    public void onRefresh() {
+        getLotterylink();
+        swipeContainer.setRefreshing(false);
+    }
+
     /**
      * 为了能够响应链接继续在本webview控件中显示，要声明此类。
      * 如果没有这个类，点击了一个链接后，系统会自动选择浏览器浏览
@@ -95,7 +115,6 @@ public class FourthFragment extends Fragment {
             return true;
         }
     }
-
 
 
     /**

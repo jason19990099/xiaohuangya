@@ -8,6 +8,8 @@ import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
 import com.aigoule.starapp.R;
 import com.aigoule.starapp.adapter.GradviewvideoAdapter;
 import com.aigoule.starapp.api.HttpCallback;
@@ -20,7 +22,7 @@ import com.squareup.picasso.Picasso;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class PersonalvideoActivity extends BaseActivity {
+public class PersonalvideoActivity extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener {
     @BindView(R.id.pic_top)
     ImageView picTop;
     @BindView(R.id.tv_title)
@@ -31,21 +33,26 @@ public class PersonalvideoActivity extends BaseActivity {
     MyGridView gvVideo;
     @BindView(R.id.scrollView)
     ScrollView scrollView;
+    @BindView(R.id.swipe_container)
+    SwipeRefreshLayout swipeContainer;
+    private int video_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personalvideo);
         ButterKnife.bind(this);
-        int video_id = getIntent().getIntExtra("video_id", 0);
+
+        swipeContainer.setOnRefreshListener(PersonalvideoActivity.this);
+        swipeContainer.setColorSchemeResources(android.R.color.holo_orange_dark,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);
+
+        video_id = getIntent().getIntExtra("video_id", 0);
         getThemeDetail(video_id);
     }
 
-
-    @Override
-    public void onBackPressed() {
-        startActivity(new Intent(PersonalvideoActivity.this,MainActivity.class));
-    }
 
 
     private void getThemeDetail(int theme_id) {
@@ -61,12 +68,10 @@ public class PersonalvideoActivity extends BaseActivity {
                         .into(picTop);
                 tvTitle.setText(data.getData().getTheme_detail().getTitle());
                 tvDescription.setText(data.getData().getTheme_detail().getDescription());
-
+                gvVideo.setFocusable(false);
                 GradviewvideoAdapter adapter = new GradviewvideoAdapter(data.getData().getTheme_video(), PersonalvideoActivity.this);
                 gvVideo.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
-
-                scrollView.fullScroll(View.FOCUS_UP) ;
             }
 
             @Override
@@ -74,5 +79,11 @@ public class PersonalvideoActivity extends BaseActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onRefresh() {
+        getThemeDetail(video_id);
+        swipeContainer.setRefreshing(false);
     }
 }

@@ -1,6 +1,5 @@
 package com.aigoule.starapp.adapter;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,10 +9,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.aigoule.starapp.R;
-import com.aigoule.starapp.activity.MainActivity;
 import com.aigoule.starapp.event.playerEvent;
 import com.aigoule.starapp.model.ThemeDetailModel;
-import com.aigoule.starapp.utils.SharePreferencesUtil;
 import com.squareup.picasso.Picasso;
 import org.greenrobot.eventbus.EventBus;
 import java.util.List;
@@ -71,7 +68,7 @@ public class GradviewvideoAdapter extends BaseAdapter {
             public void onClick(View v) {
                 playerEvent playerEvent=new playerEvent(data.get(position).getVideo_id(),data.get(position).getTitle());
                 EventBus.getDefault().postSticky(playerEvent);
-                context.startActivity(new Intent(context, MainActivity.class));
+
             }
         });
 

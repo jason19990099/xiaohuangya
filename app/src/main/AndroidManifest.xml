@@ -57,7 +57,6 @@
         android:theme="@style/AppTheme"
         tools:replace="android:icon,android:theme">
 
-        <activity android:name=".activity.PersonalvideoActivity"/>
 
         <activity
             android:name=".activity.SplashActivity"
@@ -223,11 +222,24 @@
             android:windowSoftInputMode="stateHidden"/>
 
         <activity
+            android:launchMode="singleTask"
             android:name=".activity.VideoAllActivitry"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden"/>
+        <activity
+            android:launchMode="singleTask"
+            android:name=".activity.PlayerActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"/>
 
+        <activity
+            android:launchMode="singleTask"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"
+            android:name=".activity.PersonalvideoActivity"/>
         <meta-data
             android:name="android.max_aspect"
             android:value="2.1" />

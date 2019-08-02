@@ -1,5 +1,6 @@
 package com.aigoule.starapp.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -16,12 +17,11 @@ import com.aigoule.starapp.event.GoWhereEvent;
 import com.aigoule.starapp.event.LoginEvent;
 import com.aigoule.starapp.event.PicEvent;
 import com.aigoule.starapp.event.playerEvent;
-import com.aigoule.starapp.fragment.NewFirstFragment;
+import com.aigoule.starapp.fragment.FirstFragment;
 import com.aigoule.starapp.fragment.PersonalCenterFragment;
 import com.aigoule.starapp.fragment.FourthFragment;
 import com.aigoule.starapp.fragment.LoginRegistFragment;
 import com.aigoule.starapp.fragment.PicFragment;
-import com.aigoule.starapp.fragment.PlayerFragment;
 import com.aigoule.starapp.fragment.SecondFragment;
 import com.aigoule.starapp.fragment.ThematicVideoFragment;
 import org.greenrobot.eventbus.EventBus;
@@ -76,7 +76,6 @@ public class MainActivity extends BaseActivity{
     private int currentFragmentIndex = -1; //记录当前显示的fragment
     private Fragment[] fragments;
     private View[] mllViews;
-    private PlayerFragment playerFragment;
     private LoginRegistFragment loginRegistFragment;
     private PicFragment PicFragment;
     private ThematicVideoFragment thematicVideoFragment;
@@ -87,15 +86,13 @@ public class MainActivity extends BaseActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        NewFirstFragment firstFragment=new NewFirstFragment();
+        FirstFragment firstFragment=new FirstFragment();
         SecondFragment secondFragment = new SecondFragment();
-//        ThirdFragment thirdFragment = new ThirdFragment();
         FourthFragment fourthFragment = new FourthFragment();
         PersonalCenterFragment fiveFragment = new PersonalCenterFragment();
         thematicVideoFragment=new ThematicVideoFragment();
 
         loginRegistFragment =new LoginRegistFragment();
-        playerFragment = new PlayerFragment();
         PicFragment=new PicFragment();
 
         mllViews = new View[]{llHome, llVideo, llFuli,llMakemoney, llMine};
@@ -149,8 +146,6 @@ public class MainActivity extends BaseActivity{
                 transaction.hide(fragments[currentFragmentIndex]);
             }
             transaction.show(showFragment);
-            if (null!=playerFragment)
-            transaction.hide(playerFragment);
             if (null!=PicFragment)
                 transaction.hide(PicFragment);
             if (null!= loginRegistFragment)
@@ -172,29 +167,14 @@ public class MainActivity extends BaseActivity{
      */
 
     public void goPlayer() {
-        FragmentTransaction transaction = mFragmentManager.beginTransaction();
-        if (null==playerFragment){
-            playerFragment= new PlayerFragment();
-        }
-        if (!playerFragment.isAdded()) {
-            transaction.add(R.id.view_fragment, playerFragment);
-        }
-        if (currentFragmentIndex != -1) {
-            transaction.hide(fragments[currentFragmentIndex]);
-        }
-        if (null!=PicFragment)
-            transaction.hide(PicFragment);
-        if (null!= loginRegistFragment)
-            transaction.hide(loginRegistFragment);
-        transaction.show(playerFragment);
-        transaction.commitAllowingStateLoss();
+       startActivity(new Intent(this,PlayerActivity.class));
     }
 
 
     @Override
     protected void onStop() {
         super.onStop();
-        finish();
+//        finish();
     }
 
 
@@ -212,8 +192,6 @@ public class MainActivity extends BaseActivity{
         if (currentFragmentIndex != -1) {
             transaction.hide(fragments[currentFragmentIndex]);
         }
-        if (null!=playerFragment)
-            transaction.hide(playerFragment);
         if (null!= loginRegistFragment)
             transaction.hide(loginRegistFragment);
         transaction.show(PicFragment);
@@ -232,8 +210,6 @@ public class MainActivity extends BaseActivity{
         if (currentFragmentIndex != -1) {
             transaction.hide(fragments[currentFragmentIndex]);
         }
-        if (null!=playerFragment)
-            transaction.hide(playerFragment);
         if (null!=PicFragment)
             transaction.hide(PicFragment);
         transaction.show(loginRegistFragment);
