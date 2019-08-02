@@ -113,7 +113,7 @@ public class PlayRecordsModel extends BaseModel {
 
             private int id;
             private String name;
-            private int url;
+            private String url;
 
             public int getId() {
                 return id;
@@ -131,11 +131,11 @@ public class PlayRecordsModel extends BaseModel {
                 this.name = name;
             }
 
-            public int getUrl() {
+            public String getUrl() {
                 return url;
             }
 
-            public void setUrl(int url) {
+            public void setUrl(String url) {
                 this.url = url;
             }
         }

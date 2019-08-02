@@ -22,6 +22,7 @@ import com.aigoule.starapp.event.LoginEvent;
 import com.aigoule.starapp.event.playerEvent;
 import com.aigoule.starapp.model.ClassDataModel;
 import com.aigoule.starapp.model.PlaydetailModel;
+import com.aigoule.starapp.utils.LogUtil;
 import com.aigoule.starapp.utils.SharePreferencesUtil;
 import com.aigoule.starapp.views.MyGridView;
 import com.squareup.picasso.Picasso;
@@ -115,17 +116,25 @@ public class PlayerFragment extends Fragment {
     }
 
 
+    private void initPlayDetail(String play) {
+        if (null==play){
+            Toast.makeText(getActivity(),"参数传递错误",Toast.LENGTH_LONG).show();
+            return;
+        }
 
-    private void initPlayDetail(int play) {
         if (null != getActivity())
             HttpRequest.getInstance().getPlayDetail(PlayerFragment.this, play,SharePreferencesUtil.getString(getActivity(), "id", ""),android.os.Build.SERIAL, new HttpCallback<PlaydetailModel>() {
                 @Override
                 public void onSuccess(PlaydetailModel data) {
                     if (data.getCode()==-1){
-                        EventBus.getDefault().postSticky(new LoginEvent());
                         Toast.makeText(getActivity(),data.getMessage(),Toast.LENGTH_LONG).show();
+
+                        EventBus.getDefault().postSticky(new LoginEvent());
+
+                    }else {
+                        initPlayer(data.getData().getVideo_url(), data.getData().getTitle());
                     }
-                    initPlayer(data.getData().getVideo_url(), data.getData().getTitle());
+
                 }
 
                 @Override
@@ -145,7 +154,17 @@ public class PlayerFragment extends Fragment {
      * @param videoname
      */
     private void initPlayer(String url, String videoname) {
-        videoplayer.setUp(url, JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL, videoname);
-        scrollView.fullScroll(View.FOCUS_UP);
+        if (null==url||url.equals("")){
+            Toast.makeText(getActivity(),"参数传递错误",Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        if (null!=videoplayer){
+            videoplayer.setUp(url, JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL, videoname);
+        }
+        if (null!=scrollView){
+            scrollView.fullScroll(View.FOCUS_UP);
+        }
+
     }
 }

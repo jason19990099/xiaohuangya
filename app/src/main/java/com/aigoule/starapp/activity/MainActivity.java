@@ -18,6 +18,7 @@ import com.aigoule.starapp.event.LoginEvent;
 import com.aigoule.starapp.event.PicEvent;
 import com.aigoule.starapp.event.playerEvent;
 import com.aigoule.starapp.fragment.FirstFragment;
+import com.aigoule.starapp.fragment.NewFirstFragment;
 import com.aigoule.starapp.fragment.PersonalCenterFragment;
 import com.aigoule.starapp.fragment.FourthFragment;
 import com.aigoule.starapp.fragment.LoginRegistFragment;
@@ -25,8 +26,6 @@ import com.aigoule.starapp.fragment.PicFragment;
 import com.aigoule.starapp.fragment.PlayerFragment;
 import com.aigoule.starapp.fragment.SecondFragment;
 import com.aigoule.starapp.fragment.ThematicVideoFragment;
-import com.aigoule.starapp.utils.LogUtil;
-
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -83,14 +82,15 @@ public class MainActivity extends BaseActivity{
     private LoginRegistFragment loginRegistFragment;
     private PicFragment PicFragment;
     private ThematicVideoFragment thematicVideoFragment;
-//    private FictionFragment fictionFragment;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        FirstFragment firstFragment = new FirstFragment();
+//        FirstFragment firstFragment = new FirstFragment();
+        NewFirstFragment firstFragment=new NewFirstFragment();
         SecondFragment secondFragment = new SecondFragment();
 //        ThirdFragment thirdFragment = new ThirdFragment();
         FourthFragment fourthFragment = new FourthFragment();
@@ -100,7 +100,6 @@ public class MainActivity extends BaseActivity{
         loginRegistFragment =new LoginRegistFragment();
         playerFragment = new PlayerFragment();
         PicFragment=new PicFragment();
-//        fictionFragment=new FictionFragment();
 
         mllViews = new View[]{llHome, llVideo, llFuli,llMakemoney, llMine};
         fragments = new Fragment[]{firstFragment, secondFragment, thematicVideoFragment, fourthFragment,fiveFragment};
@@ -201,12 +200,7 @@ public class MainActivity extends BaseActivity{
         finish();
     }
 
-    /**
-     * 去小説面页
-     */
-    public void goFiction() {
 
-    }
     /**
      * 去图片的面页
      */

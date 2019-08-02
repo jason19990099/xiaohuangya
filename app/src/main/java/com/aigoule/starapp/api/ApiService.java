@@ -6,6 +6,7 @@ import com.aigoule.starapp.model.AllvidesModel;
 import com.aigoule.starapp.model.BannerModel;
 import com.aigoule.starapp.model.ClassDataModel;
 import com.aigoule.starapp.model.FictionModel;
+import com.aigoule.starapp.model.FirstpageModel;
 import com.aigoule.starapp.model.Fpicmodel;
 import com.aigoule.starapp.model.InvitationListModel;
 import com.aigoule.starapp.model.LoginModel;
@@ -167,9 +168,19 @@ public interface ApiService {
     Call<AllthemeVideoModel> getThemeAllDetail(@Path("theme_id") String id);
 
 
-
+    /**
+     * 获取彩票链接
+     */
     @GET("lottery_link")
     Call<LotteryLinkModel> getLotterylinl();
+
+
+    /**
+     * 获取首页全部的信息
+     */
+    @GET("home/all")
+    Call<FirstpageModel> getHomeall();
+
 
 
 }

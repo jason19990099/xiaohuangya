@@ -131,8 +131,8 @@ public class FirstFragment extends Fragment  {
         HttpRequest.getInstance().getMainTheme(FirstFragment.this, new HttpCallback<MainTheme>() {
             @Override
             public void onSuccess(MainTheme data) {
-                ThemeGradviewAdapter adapter = new ThemeGradviewAdapter(data.getData(), getActivity());
-                mygradviewTheme.setAdapter(adapter);
+//                ThemeGradviewAdapter adapter = new ThemeGradviewAdapter(data.getData(), getActivity());
+//                mygradviewTheme.setAdapter(adapter);
             }
 
             @Override

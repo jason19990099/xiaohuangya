@@ -78,7 +78,7 @@ public class ClassDataModel extends BaseModel {
             private String image;
             private String name;
             private String video_url;
-            private int video_id;
+            private String video_id;
             private int image_width;
             private int image_height;
             private String class_name;
@@ -107,11 +107,11 @@ public class ClassDataModel extends BaseModel {
                 this.video_url = video_url;
             }
 
-            public int getVideo_id() {
+            public String getVideo_id() {
                 return video_id;
             }
 
-            public void setVideo_id(int video_id) {
+            public void setVideo_id(String video_id) {
                 this.video_id = video_id;
             }
 

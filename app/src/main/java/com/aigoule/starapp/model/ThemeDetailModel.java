@@ -107,15 +107,15 @@ public class ThemeDetailModel extends BaseModel {
              * picture : http://xhy166.com//pictures/20190725/5d3981d0a2cf8.jpg
              */
 
-            private int video_id;
+            private String video_id;
             private String title;
             private String picture;
 
-            public int getVideo_id() {
+            public String getVideo_id() {
                 return video_id;
             }
 
-            public void setVideo_id(int video_id) {
+            public void setVideo_id(String video_id) {
                 this.video_id = video_id;
             }
 

@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.aigoule.starapp.R;
 import com.aigoule.starapp.event.GoWhereEvent;
 import com.aigoule.starapp.event.SecondEvent;
+import com.aigoule.starapp.model.FirstpageModel;
 import com.aigoule.starapp.model.MainTheme;
 import com.squareup.picasso.Picasso;
 
@@ -20,9 +21,9 @@ import org.greenrobot.eventbus.EventBus;
 import java.util.List;
 
 public class ThemeGradviewAdapter extends BaseAdapter {
-    private List<MainTheme.DataBean> data;
+    private List<FirstpageModel.DataBean.ListBean> data;
     private LayoutInflater layoutInflater;
-    public ThemeGradviewAdapter(List<MainTheme.DataBean> data,Context context){
+    public ThemeGradviewAdapter(List<FirstpageModel.DataBean.ListBean> data,Context context){
         this.data=data;
         layoutInflater = LayoutInflater.from(context);
 

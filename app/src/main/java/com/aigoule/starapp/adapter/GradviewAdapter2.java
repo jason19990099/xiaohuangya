@@ -1,32 +1,33 @@
 package com.aigoule.starapp.adapter;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.aigoule.starapp.R;
-import com.aigoule.starapp.activity.MainActivity;
 import com.aigoule.starapp.event.playerEvent;
-import com.aigoule.starapp.model.ThemeDetailModel;
-import com.aigoule.starapp.utils.SharePreferencesUtil;
+import com.aigoule.starapp.model.FirstpageModel;
+import com.aigoule.starapp.utils.LogUtil;
 import com.squareup.picasso.Picasso;
 import org.greenrobot.eventbus.EventBus;
 import java.util.List;
 
-public class GradviewvideoAdapter extends BaseAdapter {
-    private List<ThemeDetailModel.DataBean.ThemeVideoBean>  data;
+public class GradviewAdapter2 extends BaseAdapter {
+    private List<FirstpageModel.DataBean.ListBean> data ;
     private LayoutInflater layoutInflater;
     private Context context;
 
-    public GradviewvideoAdapter(List<ThemeDetailModel.DataBean.ThemeVideoBean>  data, Context context){
+    public GradviewAdapter2(List<FirstpageModel.DataBean.ListBean> data, Context context){
         this.context=context;
-      this.data=data;
-      layoutInflater = LayoutInflater.from(context);
+        this.data=data;
+        layoutInflater = LayoutInflater.from(context);
     }
 
     @Override
@@ -58,20 +59,28 @@ public class GradviewvideoAdapter extends BaseAdapter {
         }else{
             holder = (ViewHolder)view.getTag();
         }
-        holder.tv_video.setText(data.get(position).getTitle());
-        Picasso.get().load(data.get(position).getPicture())
+        holder.tv_video.setText(data.get(position).getName());
+
+        if (!data.get(position).getImage().equals(""))
+        Picasso.get().load(data.get(position).getImage())
                 .placeholder(R.mipmap.ic_yellow)
                 .error(R.mipmap.ic_yellow)
                 .config(Bitmap.Config.RGB_565)
                 .fit()
                 .centerCrop()
                 .into(holder.iv_video);
+
         holder.ll_video.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                playerEvent playerEvent=new playerEvent(data.get(position).getVideo_id(),data.get(position).getTitle());
-                EventBus.getDefault().postSticky(playerEvent);
-                context.startActivity(new Intent(context, MainActivity.class));
+                    if (null==data.get(position).getVideo_id()||data.get(position).getVideo_id().equals("") ||null==data.get(position).getName()){
+                        Toast.makeText(context,"播放链接没办法播放",Toast.LENGTH_LONG).show();
+                        return;
+                    }
+                    LogUtil.e("========data.get(position).getVideo_id()======="+data.get(position).getVideo_id());
+                    LogUtil.e("========data.get(position).getName()======="+data.get(position).getName());
+                    playerEvent  playerEvent=new playerEvent(data.get(position).getVideo_id(),data.get(position).getName());
+                    EventBus.getDefault().postSticky(playerEvent);
             }
         });
 

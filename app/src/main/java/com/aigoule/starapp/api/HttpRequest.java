@@ -11,6 +11,7 @@ import com.aigoule.starapp.model.BannerModel;
 import com.aigoule.starapp.model.Body;
 import com.aigoule.starapp.model.ClassDataModel;
 import com.aigoule.starapp.model.FictionModel;
+import com.aigoule.starapp.model.FirstpageModel;
 import com.aigoule.starapp.model.Fpicmodel;
 import com.aigoule.starapp.model.InvitationListModel;
 import com.aigoule.starapp.model.LoginModel;
@@ -289,7 +290,7 @@ public class HttpRequest {
     /**
      *  获取播放的具体信息
      */
-    public void getPlayDetail(Object tag, int play, String user_id,String phone_id,
+    public void getPlayDetail(Object tag, String play, String user_id,String phone_id,
                         HttpCallback<PlaydetailModel> callback) {
         RequestBody body = new RequestBodyBuilder()
                 .addParam("play", play)
@@ -392,6 +393,16 @@ public class HttpRequest {
      */
     public void getLotteryLinlk(Object tag, HttpCallback<LotteryLinkModel> callback) {
         Call<LotteryLinkModel> call = mService.getLotterylinl();
+        putCall(tag, call);
+        call.enqueue(callback);
+    }
+
+
+    /**
+     * 获取首页全部信息
+     */
+    public void getFirstAllmessage(Object tag, HttpCallback<FirstpageModel> callback) {
+        Call<FirstpageModel> call = mService.getHomeall();
         putCall(tag, call);
         call.enqueue(callback);
     }
