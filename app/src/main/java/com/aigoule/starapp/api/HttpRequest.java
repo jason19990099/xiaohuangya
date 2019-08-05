@@ -23,6 +23,7 @@ import com.aigoule.starapp.model.PicdetailModel;
 import com.aigoule.starapp.model.PlayRecordsModel;
 import com.aigoule.starapp.model.PlaydetailModel;
 import com.aigoule.starapp.model.RegistMosdel;
+import com.aigoule.starapp.model.SearchModel;
 import com.aigoule.starapp.model.ThemeDetailModel;
 import com.aigoule.starapp.model.UpdataModel;
 import com.aigoule.starapp.model.VideoclassdataModel;
@@ -403,6 +404,16 @@ public class HttpRequest {
      */
     public void getFirstAllmessage(Object tag, HttpCallback<FirstpageModel> callback) {
         Call<FirstpageModel> call = mService.getHomeall();
+        putCall(tag, call);
+        call.enqueue(callback);
+    }
+
+
+    /**
+     *  搜索视频
+     */
+    public void search(Object tag,String wd, HttpCallback<SearchModel> callback) {
+        Call<SearchModel> call = mService.search(wd);
         putCall(tag, call);
         call.enqueue(callback);
     }

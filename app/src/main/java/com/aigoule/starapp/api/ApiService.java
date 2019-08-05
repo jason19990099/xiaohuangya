@@ -18,6 +18,7 @@ import com.aigoule.starapp.model.PicdetailModel;
 import com.aigoule.starapp.model.PlayRecordsModel;
 import com.aigoule.starapp.model.PlaydetailModel;
 import com.aigoule.starapp.model.RegistMosdel;
+import com.aigoule.starapp.model.SearchModel;
 import com.aigoule.starapp.model.ThemeDetailModel;
 import com.aigoule.starapp.model.UpdataModel;
 import com.aigoule.starapp.model.VideoclassdataModel;
@@ -180,6 +181,12 @@ public interface ApiService {
      */
     @GET("home/all")
     Call<FirstpageModel> getHomeall();
+
+    /**
+     * 搜索
+     */
+    @GET("video/search")
+    Call<SearchModel> search(@Query("wd") String id);
 
 
 

@@ -1,5 +1,4 @@
 package com.aigoule.starapp.fragment;
-
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,12 +6,10 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
 import com.aigoule.starapp.R;
 import com.aigoule.starapp.adapter.ListAllAdapter;
 import com.aigoule.starapp.api.HttpCallback;
@@ -22,10 +19,8 @@ import com.aigoule.starapp.model.FirstpageModel;
 import com.aigoule.starapp.utils.setListViewHeightBasedOnChildren;
 import com.aigoule.starapp.views.banners.BannerBaseView;
 import com.aigoule.starapp.views.banners.MainBannerView;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -38,7 +33,6 @@ public class FirstFragment extends Fragment implements SwipeRefreshLayout.OnRefr
     ListView lvAll;
     @BindView(R.id.swipe_container)
     SwipeRefreshLayout swipeContainer;
-
 
     @Nullable
     @Override
@@ -95,7 +89,6 @@ public class FirstFragment extends Fragment implements SwipeRefreshLayout.OnRefr
                 lvAll.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
                 setListViewHeightBasedOnChildren.setListViewHeightBasedOnChildren(lvAll);
-
             }
 
             @Override

@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -31,6 +32,7 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
 
@@ -50,6 +52,16 @@ public class PlayerActivity extends BaseActivity implements SwipeRefreshLayout.O
     ScrollView scrollView;
     @BindView(R.id.swipe_container)
     SwipeRefreshLayout swipeContainer;
+    @BindView(R.id.iv_backs)
+    ImageView ivBacks;
+    @BindView(R.id.iv_new_video)
+    ImageView ivNewVideo;
+    @BindView(R.id.tv_title_newvideo)
+    TextView tvTitleNewvideo;
+    @BindView(R.id.editext_videos)
+    EditText editextVideos;
+    @BindView(R.id.iv_search)
+    ImageView ivSearch;
     private PlayerAdapter adapter;
 
 
@@ -73,6 +85,7 @@ public class PlayerActivity extends BaseActivity implements SwipeRefreshLayout.O
             public void onSuccess(ClassDataModel data) {
                 adapter = new PlayerAdapter(PlayerActivity.this, data.getData().getList());
                 gvFiction.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
 
                 Picasso.get().load(data.getData().getIcon_image())
                         .placeholder(R.mipmap.yellow_duck)
@@ -176,6 +189,20 @@ public class PlayerActivity extends BaseActivity implements SwipeRefreshLayout.O
         swipeContainer.setRefreshing(false);
     }
 
+
+    @OnClick({R.id.iv_backs,R.id.iv_search})
+    public void onViewClicked(View view) {
+        if (view.getId()==R.id.iv_backs){
+            finish();
+        }
+
+        if (view.getId()==R.id.iv_search){
+            Intent intent=new Intent(this,SearchActivity.class);
+            intent.putExtra("search_id",editextVideos.getText().toString().replace(" ",""));
+            startActivity(intent);
+        }
+
+    }
 
 
 }

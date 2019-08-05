@@ -1,9 +1,7 @@
 package com.aigoule.starapp.activity;
 
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -21,6 +19,7 @@ import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class PersonalvideoActivity extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener {
     @BindView(R.id.pic_top)
@@ -35,6 +34,8 @@ public class PersonalvideoActivity extends BaseActivity implements SwipeRefreshL
     ScrollView scrollView;
     @BindView(R.id.swipe_container)
     SwipeRefreshLayout swipeContainer;
+    @BindView(R.id.iv_backs)
+    ImageView ivBacks;
     private int video_id;
 
     @Override
@@ -52,7 +53,6 @@ public class PersonalvideoActivity extends BaseActivity implements SwipeRefreshL
         video_id = getIntent().getIntExtra("video_id", 0);
         getThemeDetail(video_id);
     }
-
 
 
     private void getThemeDetail(int theme_id) {
@@ -85,5 +85,10 @@ public class PersonalvideoActivity extends BaseActivity implements SwipeRefreshL
     public void onRefresh() {
         getThemeDetail(video_id);
         swipeContainer.setRefreshing(false);
+    }
+
+    @OnClick(R.id.iv_backs)
+    public void onViewClicked() {
+        finish();
     }
 }

@@ -20,8 +20,8 @@ public class ThemeGradviewAdapter2 extends BaseAdapter {
     public ThemeGradviewAdapter2(List<FirstpageModel.DataBean.ListBean> data, Context context){
         this.data=data;
         layoutInflater = LayoutInflater.from(context);
-
     }
+
     @Override
     public int getCount() {
         return null==data?0:data.size();
@@ -45,15 +45,13 @@ public class ThemeGradviewAdapter2 extends BaseAdapter {
             view = layoutInflater.inflate(R.layout.adaper_them2, parent, false);
             holder = new ViewHolder();
             holder.tv_theme=view.findViewById(R.id.tv_theme);
-
             holder.ll_adapter=view.findViewById(R.id.ll_adapter);
             view.setTag(holder);
-
         }else{
             holder = (ViewHolder)view.getTag();
         }
-        holder.tv_theme.setText(data.get(position).getName());
 
+        holder.tv_theme.setText(data.get(position).getName());
         holder.ll_adapter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

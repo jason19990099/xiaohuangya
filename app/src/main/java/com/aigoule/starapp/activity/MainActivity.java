@@ -1,8 +1,8 @@
 package com.aigoule.starapp.activity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -18,9 +18,9 @@ import com.aigoule.starapp.event.LoginEvent;
 import com.aigoule.starapp.event.PicEvent;
 import com.aigoule.starapp.event.playerEvent;
 import com.aigoule.starapp.fragment.FirstFragment;
-import com.aigoule.starapp.fragment.PersonalCenterFragment;
 import com.aigoule.starapp.fragment.FourthFragment;
 import com.aigoule.starapp.fragment.LoginRegistFragment;
+import com.aigoule.starapp.fragment.PersonalCenterFragment;
 import com.aigoule.starapp.fragment.PicFragment;
 import com.aigoule.starapp.fragment.SecondFragment;
 import com.aigoule.starapp.fragment.ThematicVideoFragment;
@@ -32,13 +32,11 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
-public class MainActivity extends BaseActivity{
+public class MainActivity extends BaseActivity {
     @BindView(R.id.iv_new_video)
     ImageView ivNewVideo;
     @BindView(R.id.tv_title_newvideo)
     TextView tvTitleNewvideo;
-    @BindView(R.id.iv_new_video_more)
-    ImageView ivNewVideoMore;
     @BindView(R.id.view_fragment)
     FrameLayout viewFragment;
     @BindView(R.id.iv_home)
@@ -71,6 +69,10 @@ public class MainActivity extends BaseActivity{
     TextView tvMine;
     @BindView(R.id.ll_mine)
     LinearLayout llMine;
+    @BindView(R.id.editext_videos)
+    EditText editextVideos;
+    @BindView(R.id.iv_search)
+    ImageView ivSearch;
     private FragmentManager mFragmentManager;  // Fragment管理器
     private long mClickTime;
     private int currentFragmentIndex = -1; //记录当前显示的fragment
@@ -86,17 +88,17 @@ public class MainActivity extends BaseActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        FirstFragment firstFragment=new FirstFragment();
+        FirstFragment firstFragment = new FirstFragment();
         SecondFragment secondFragment = new SecondFragment();
         FourthFragment fourthFragment = new FourthFragment();
         PersonalCenterFragment fiveFragment = new PersonalCenterFragment();
-        thematicVideoFragment=new ThematicVideoFragment();
+        thematicVideoFragment = new ThematicVideoFragment();
 
-        loginRegistFragment =new LoginRegistFragment();
-        PicFragment=new PicFragment();
+        loginRegistFragment = new LoginRegistFragment();
+        PicFragment = new PicFragment();
 
-        mllViews = new View[]{llHome, llVideo, llFuli,llMakemoney, llMine};
-        fragments = new Fragment[]{firstFragment, secondFragment, thematicVideoFragment, fourthFragment,fiveFragment};
+        mllViews = new View[]{llHome, llVideo, llFuli, llMakemoney, llMine};
+        fragments = new Fragment[]{firstFragment, secondFragment, thematicVideoFragment, fourthFragment, fiveFragment};
         mFragmentManager = getSupportFragmentManager();
         changeShowFragment(0);
 
@@ -105,7 +107,7 @@ public class MainActivity extends BaseActivity{
     @Override
     public void onStart() {
         super.onStart();
-        if(!EventBus.getDefault().isRegistered(this)){//加上判断
+        if (!EventBus.getDefault().isRegistered(this)) {//加上判断
             EventBus.getDefault().register(this);
         }
     }
@@ -131,27 +133,28 @@ public class MainActivity extends BaseActivity{
                 break;
         }
     }
+
     /**
      * 根据fragment数组下标，切换需要显示的fragment，并且隐藏当前的fragment
      */
     public void changeShowFragment(int index) {
         changeSelectState(index);
 //        if (index != currentFragmentIndex) {
-            Fragment showFragment = fragments[index];
-            FragmentTransaction transaction = mFragmentManager.beginTransaction();
-            if (!showFragment.isAdded()) {
-                transaction.add(R.id.view_fragment, showFragment);
-            }
-            if (currentFragmentIndex != -1) {
-                transaction.hide(fragments[currentFragmentIndex]);
-            }
-            transaction.show(showFragment);
-            if (null!=PicFragment)
-                transaction.hide(PicFragment);
-            if (null!= loginRegistFragment)
-                transaction.hide(loginRegistFragment);
-            transaction.commitAllowingStateLoss();
-            currentFragmentIndex = index;
+        Fragment showFragment = fragments[index];
+        FragmentTransaction transaction = mFragmentManager.beginTransaction();
+        if (!showFragment.isAdded()) {
+            transaction.add(R.id.view_fragment, showFragment);
+        }
+        if (currentFragmentIndex != -1) {
+            transaction.hide(fragments[currentFragmentIndex]);
+        }
+        transaction.show(showFragment);
+        if (null != PicFragment)
+            transaction.hide(PicFragment);
+        if (null != loginRegistFragment)
+            transaction.hide(loginRegistFragment);
+        transaction.commitAllowingStateLoss();
+        currentFragmentIndex = index;
 //        }
     }
 
@@ -167,14 +170,7 @@ public class MainActivity extends BaseActivity{
      */
 
     public void goPlayer() {
-       startActivity(new Intent(this,PlayerActivity.class));
-    }
-
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-//        finish();
+        startActivity(new Intent(this, PlayerActivity.class));
     }
 
 
@@ -183,8 +179,8 @@ public class MainActivity extends BaseActivity{
      */
     public void goPicdetail() {
         FragmentTransaction transaction = mFragmentManager.beginTransaction();
-        if (null==PicFragment){
-            PicFragment=new PicFragment();
+        if (null == PicFragment) {
+            PicFragment = new PicFragment();
         }
         if (!PicFragment.isAdded()) {
             transaction.add(R.id.view_fragment, PicFragment);
@@ -192,7 +188,7 @@ public class MainActivity extends BaseActivity{
         if (currentFragmentIndex != -1) {
             transaction.hide(fragments[currentFragmentIndex]);
         }
-        if (null!= loginRegistFragment)
+        if (null != loginRegistFragment)
             transaction.hide(loginRegistFragment);
         transaction.show(PicFragment);
         transaction.commitAllowingStateLoss();
@@ -200,7 +196,7 @@ public class MainActivity extends BaseActivity{
 
 
     /**
-     *  跳到登录界面
+     * 跳到登录界面
      */
     public void goLogin() {
         FragmentTransaction transaction = mFragmentManager.beginTransaction();
@@ -210,19 +206,10 @@ public class MainActivity extends BaseActivity{
         if (currentFragmentIndex != -1) {
             transaction.hide(fragments[currentFragmentIndex]);
         }
-        if (null!=PicFragment)
+        if (null != PicFragment)
             transaction.hide(PicFragment);
         transaction.show(loginRegistFragment);
         transaction.commitAllowingStateLoss();
-    }
-
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if (EventBus.getDefault().isRegistered(this)) {
-            EventBus.getDefault().unregister(this);
-        }
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
@@ -257,5 +244,27 @@ public class MainActivity extends BaseActivity{
         }
     }
 
+
+    @OnClick(R.id.iv_search)
+    public void onViewClicked() {
+        Intent intent=new Intent(this,SearchActivity.class);
+        intent.putExtra("search_id",editextVideos.getText().toString().replace(" ",""));
+        startActivity(intent);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+//        finish();
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().unregister(this);
+        }
+    }
 
 }
