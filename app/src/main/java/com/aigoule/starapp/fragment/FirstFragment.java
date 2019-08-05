@@ -84,6 +84,7 @@ public class FirstFragment extends Fragment implements SwipeRefreshLayout.OnRefr
         HttpRequest.getInstance().getFirstAllmessage(FirstFragment.this, new HttpCallback<FirstpageModel>() {
             @Override
             public void onSuccess(FirstpageModel data) {
+
                 lvAll.setFocusable(false);
                 ListAllAdapter adapter = new ListAllAdapter(data.getData(), getActivity());
                 lvAll.setAdapter(adapter);

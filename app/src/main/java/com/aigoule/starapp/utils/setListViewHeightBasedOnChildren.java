@@ -17,11 +17,9 @@ public class setListViewHeightBasedOnChildren {
             View listItem = listAdapter.getView(i, null, listView);
             listItem.measure(0, 0); // 计算子项View 的宽高
             totalHeight += listItem.getMeasuredHeight(); // 统计所有子项的总高度
-            LogUtil.e("=======listItem.getMeasuredHeight======="+i+"=========="+listItem.getMeasuredHeight());
-            LogUtil.e("======totalHeight========"+totalHeight);
         }
         ViewGroup.LayoutParams params = listView.getLayoutParams();
-        params.height = totalHeight + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
+        params.height = totalHeight + (listView.getDividerHeight() * (listAdapter.getCount() - 1))-1400;
         // listView.getDividerHeight()获取子项间分隔符占用的高度
         // params.height最后得到整个ListView完整显示需要的高度
         listView.setLayoutParams(params);
