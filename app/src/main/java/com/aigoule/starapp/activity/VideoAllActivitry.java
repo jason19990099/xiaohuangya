@@ -5,11 +5,14 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
 import com.aigoule.starapp.R;
 import com.aigoule.starapp.adapter.ThematicVideoAdapter2;
 import com.aigoule.starapp.api.HttpCallback;
 import com.aigoule.starapp.api.HttpRequest;
 import com.aigoule.starapp.base.BaseActivity;
+import com.aigoule.starapp.fragment.ThematicVideoFragment;
 import com.aigoule.starapp.model.AllthemeVideoModel;
 import com.aigoule.starapp.views.MyGridView;
 import com.squareup.picasso.Picasso;
@@ -21,13 +24,15 @@ import butterknife.ButterKnife;
 /**
  * 全部的专题
  */
-public class VideoAllActivitry extends BaseActivity {
+public class VideoAllActivitry extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener {
     @BindView(R.id.iv_pic)
     ImageView ivPic;
     @BindView(R.id.tv_name)
     TextView tvName;
     @BindView(R.id.gv_video)
     MyGridView gvVideo;
+    @BindView(R.id.swipe_container)
+    SwipeRefreshLayout swipeContainer;
     private String id;
 
     @Override
@@ -35,13 +40,19 @@ public class VideoAllActivitry extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_videoall);
         ButterKnife.bind(this);
-        id=getIntent().getStringExtra("themeType");
+
+        swipeContainer.setOnRefreshListener(VideoAllActivitry.this);
+        swipeContainer.setColorSchemeResources(android.R.color.holo_orange_dark,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);
+        id = getIntent().getStringExtra("themeType");
         getAllTheme(id);
     }
 
 
     private void getAllTheme(String id) {
-        HttpRequest.getInstance().getALLThemeDetail(VideoAllActivitry.this,id, new HttpCallback<AllthemeVideoModel>() {
+        HttpRequest.getInstance().getALLThemeDetail(VideoAllActivitry.this, id, new HttpCallback<AllthemeVideoModel>() {
             @Override
             public void onSuccess(AllthemeVideoModel data) {
                 tvName.setText(data.getData().getTitle());
@@ -54,7 +65,7 @@ public class VideoAllActivitry extends BaseActivity {
                         .into(ivPic);
 
 
-                ThematicVideoAdapter2 adapter=new ThematicVideoAdapter2(data.getData().getList(),VideoAllActivitry.this);
+                ThematicVideoAdapter2 adapter = new ThematicVideoAdapter2(data.getData().getList(), VideoAllActivitry.this);
                 gvVideo.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
             }
@@ -66,18 +77,10 @@ public class VideoAllActivitry extends BaseActivity {
         });
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+    @Override
+    public void onRefresh() {
+        getAllTheme(id);
+        swipeContainer.setRefreshing(false);
+    }
 
 }

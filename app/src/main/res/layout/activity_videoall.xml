@@ -5,13 +5,20 @@
     android:orientation="vertical"
     android:layout_height="match_parent">
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/swipe_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+
+
+
+
 
     <LinearLayout
         android:layout_margin="@dimen/dimen_10"
+        android:background="#343434"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+    <LinearLayout
         android:background="#343434"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -47,6 +54,12 @@
 
 
     </RelativeLayout>
+    </LinearLayout>
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:background="#343434"
+            android:id="@+id/swipe_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
         <ScrollView  android:layout_width="match_parent"
             android:orientation="vertical"
@@ -60,6 +73,7 @@
 
         </ScrollView>
 
-    </LinearLayout>
+
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</LinearLayout>
 </LinearLayout>
