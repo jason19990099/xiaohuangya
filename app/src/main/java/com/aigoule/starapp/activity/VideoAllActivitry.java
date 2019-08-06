@@ -12,13 +12,13 @@ import com.aigoule.starapp.adapter.ThematicVideoAdapter2;
 import com.aigoule.starapp.api.HttpCallback;
 import com.aigoule.starapp.api.HttpRequest;
 import com.aigoule.starapp.base.BaseActivity;
-import com.aigoule.starapp.fragment.ThematicVideoFragment;
 import com.aigoule.starapp.model.AllthemeVideoModel;
 import com.aigoule.starapp.views.MyGridView;
 import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 
 /**
@@ -33,6 +33,8 @@ public class VideoAllActivitry extends BaseActivity implements SwipeRefreshLayou
     MyGridView gvVideo;
     @BindView(R.id.swipe_container)
     SwipeRefreshLayout swipeContainer;
+    @BindView(R.id.iv_backs)
+    ImageView ivBacks;
     private String id;
 
     @Override
@@ -83,4 +85,8 @@ public class VideoAllActivitry extends BaseActivity implements SwipeRefreshLayou
         swipeContainer.setRefreshing(false);
     }
 
+    @OnClick(R.id.iv_backs)
+    public void onViewClicked() {
+        finish();
+    }
 }

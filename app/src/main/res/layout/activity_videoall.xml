@@ -35,7 +35,16 @@
 
         <ImageView
             android:layout_centerVertical="true"
-            android:src="@mipmap/ic_launcher"
+            android:src="@mipmap/iv_backs"
+            android:id="@+id/iv_backs"
+            android:layout_alignParentLeft="true"
+            android:layout_width="25dp"
+            android:layout_height="25dp" />
+
+        <ImageView
+            android:layout_marginLeft="@dimen/dimen_40"
+            android:layout_toEndOf="@+id/iv_backs"
+            android:layout_centerVertical="true"
             android:id="@+id/iv_pic"
             android:layout_alignParentLeft="true"
             android:layout_width="30dp"
@@ -46,7 +55,6 @@
             android:layout_centerVertical="true"
             android:textColor="@color/white"
             android:layout_marginLeft="5dp"
-            android:text="name"
             android:layout_toRightOf="@+id/iv_pic"
             android:id="@+id/tv_name"
             android:layout_width="wrap_content"
