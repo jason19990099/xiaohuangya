@@ -102,6 +102,7 @@ public class MainActivity extends BaseActivity {
         mFragmentManager = getSupportFragmentManager();
         changeShowFragment(0);
 
+
     }
 
     @Override

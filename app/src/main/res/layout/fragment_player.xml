@@ -44,6 +44,8 @@
             android:layout_height="wrap_content"/>
 
         <LinearLayout
+            android:focusable="true"
+            android:focusableInTouchMode="true"
             android:layout_centerInParent="true"
             android:layout_alignParentRight="true"
             android:background="@color/gray_4c4c4c"
