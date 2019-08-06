@@ -8,6 +8,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.aigoule.starapp.R;
 import com.aigoule.starapp.event.GoWhereEvent;
+import com.aigoule.starapp.event.OpenEvent;
 import com.aigoule.starapp.model.FirstpageModel;
 import org.greenrobot.eventbus.EventBus;
 import java.util.List;
@@ -17,14 +18,27 @@ import java.util.List;
 public class ThemeGradviewAdapter2 extends BaseAdapter {
     private List<FirstpageModel.DataBean.ListBean> data;
     private LayoutInflater layoutInflater;
-    public ThemeGradviewAdapter2(List<FirstpageModel.DataBean.ListBean> data, Context context){
+    private boolean open;
+    public ThemeGradviewAdapter2(List<FirstpageModel.DataBean.ListBean> data, Context context,boolean open){
         this.data=data;
         layoutInflater = LayoutInflater.from(context);
+        this.open =open;
     }
 
     @Override
     public int getCount() {
-        return null==data?0:data.size();
+       if(open){
+           return  data.size();
+       }else{
+           if (data.size()>=6){
+               return  6;
+           }else {
+               return data.size();
+           }
+
+
+       }
+
     }
 
     @Override
@@ -51,11 +65,43 @@ public class ThemeGradviewAdapter2 extends BaseAdapter {
             holder = (ViewHolder)view.getTag();
         }
 
-        holder.tv_theme.setText(data.get(position).getName());
+        if (open){
+            if (position==data.size()-1){
+                holder.tv_theme.setText("收起");
+            }else{
+                holder.tv_theme.setText(data.get(position).getName());
+            }
+
+        }else {
+            if (position==5){
+                holder.tv_theme.setText("展开");
+            }else {
+                holder.tv_theme.setText(data.get(position).getName());
+            }
+        }
+
         holder.ll_adapter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EventBus.getDefault().postSticky(new GoWhereEvent(1));
+                if (open){
+                    if (position==data.size()-1){
+                        open=false;
+                        EventBus.getDefault().postSticky(new OpenEvent(open));
+                    }else{
+                        EventBus.getDefault().postSticky(new GoWhereEvent(1));
+                    }
+
+                }else{
+                    if (position==5){
+                        //发消息展开
+                        open=true;
+                        EventBus.getDefault().postSticky(new OpenEvent(open));
+                    }else{
+                        EventBus.getDefault().postSticky(new GoWhereEvent(1));
+                    }
+
+                }
+
             }
         });
 

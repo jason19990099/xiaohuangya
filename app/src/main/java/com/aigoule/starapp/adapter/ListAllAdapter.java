@@ -19,8 +19,10 @@ public class ListAllAdapter extends BaseAdapter {
     private List<FirstpageModel.DataBean> data ;
     private Context context;
     private LayoutInflater layoutInflater;
+    private boolean open;
 
-    public ListAllAdapter(List<FirstpageModel.DataBean> data,Context context){
+    public ListAllAdapter(List<FirstpageModel.DataBean> data,Context context,boolean open){
+        this.open=open;
         this.data=data;
         this.context=context;
         layoutInflater = LayoutInflater.from(context);
@@ -82,7 +84,7 @@ public class ListAllAdapter extends BaseAdapter {
             holder.gv_home.setAdapter(adapter);
         } else if (data.get(position).getPart()==2){
             holder.rl_line.setVisibility(View.GONE);
-            ThemeGradviewAdapter2 adapter = new ThemeGradviewAdapter2(data.get(position).getList(), context);
+            ThemeGradviewAdapter2 adapter = new ThemeGradviewAdapter2(data.get(position).getList(), context,open);
             holder.gv_home.setAdapter(adapter);
         }else{
             holder.rl_line.setVisibility(View.VISIBLE);

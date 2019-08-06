@@ -14,11 +14,16 @@ import com.aigoule.starapp.R;
 import com.aigoule.starapp.adapter.ListAllAdapter;
 import com.aigoule.starapp.api.HttpCallback;
 import com.aigoule.starapp.api.HttpRequest;
+import com.aigoule.starapp.event.OpenEvent;
 import com.aigoule.starapp.model.BannerModel;
 import com.aigoule.starapp.model.FirstpageModel;
+import com.aigoule.starapp.utils.LogUtil;
 import com.aigoule.starapp.utils.setListViewHeightBasedOnChildren;
 import com.aigoule.starapp.views.banners.BannerBaseView;
 import com.aigoule.starapp.views.banners.MainBannerView;
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 import java.util.ArrayList;
 import java.util.List;
 import butterknife.BindView;
@@ -33,6 +38,7 @@ public class FirstFragment extends Fragment implements SwipeRefreshLayout.OnRefr
     ListView lvAll;
     @BindView(R.id.swipe_container)
     SwipeRefreshLayout swipeContainer;
+    private FirstpageModel datas;
 
     @Nullable
     @Override
@@ -50,6 +56,30 @@ public class FirstFragment extends Fragment implements SwipeRefreshLayout.OnRefr
         getHomeAll();//轮播图外的其他信息
         return view;
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
+    public void onEvent(OpenEvent event) {
+        lvAll.setFocusable(false);
+        ListAllAdapter adapter = new ListAllAdapter(datas.getData(), getActivity(),event.isOpen());
+        lvAll.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+        setListViewHeightBasedOnChildren.setListViewHeightBasedOnChildren(lvAll);
+    }
+
+
 
     private void getBanner() {
         HttpRequest.getInstance().getBanner(FirstFragment.this, new HttpCallback<BannerModel>() {
@@ -84,9 +114,9 @@ public class FirstFragment extends Fragment implements SwipeRefreshLayout.OnRefr
         HttpRequest.getInstance().getFirstAllmessage(FirstFragment.this, new HttpCallback<FirstpageModel>() {
             @Override
             public void onSuccess(FirstpageModel data) {
-
+                datas=data;
                 lvAll.setFocusable(false);
-                ListAllAdapter adapter = new ListAllAdapter(data.getData(), getActivity());
+                ListAllAdapter adapter = new ListAllAdapter(data.getData(), getActivity(),false);
                 lvAll.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
                 setListViewHeightBasedOnChildren.setListViewHeightBasedOnChildren(lvAll);

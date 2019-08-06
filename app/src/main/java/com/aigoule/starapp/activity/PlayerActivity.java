@@ -10,9 +10,7 @@ import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
 import com.aigoule.starapp.R;
 import com.aigoule.starapp.adapter.PlayerAdapter;
 import com.aigoule.starapp.api.HttpCallback;
@@ -25,11 +23,9 @@ import com.aigoule.starapp.model.PlaydetailModel;
 import com.aigoule.starapp.utils.SharePreferencesUtil;
 import com.aigoule.starapp.views.MyGridView;
 import com.squareup.picasso.Picasso;
-
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
