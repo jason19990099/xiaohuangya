@@ -1,4 +1,5 @@
 package com.aigoule.starapp.adapter;
+
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.view.LayoutInflater;
@@ -16,12 +17,12 @@ import com.squareup.picasso.Picasso;
 import org.greenrobot.eventbus.EventBus;
 import java.util.List;
 
-public class GradviewAdapter2 extends BaseAdapter {
+public class GradviewAdapter3 extends BaseAdapter {
     private List<FirstpageModel.DataBean.ListBean> data ;
     private LayoutInflater layoutInflater;
     private Context context;
 
-    public GradviewAdapter2(List<FirstpageModel.DataBean.ListBean> data, Context context){
+    public GradviewAdapter3(List<FirstpageModel.DataBean.ListBean> data, Context context){
         this.context=context;
         this.data=data;
         layoutInflater = LayoutInflater.from(context);
@@ -47,7 +48,7 @@ public class GradviewAdapter2 extends BaseAdapter {
         View view = convertView;
         ViewHolder holder;
         if (view == null) {
-            view = layoutInflater.inflate(R.layout.item_video, parent, false);
+            view = layoutInflater.inflate(R.layout.item_video2, parent, false);
             holder = new ViewHolder();
             holder.tv_video=view.findViewById(R.id.tv_video);
             holder.iv_video=view.findViewById(R.id.iv_video);
@@ -66,9 +67,6 @@ public class GradviewAdapter2 extends BaseAdapter {
                 .fit()
                 .centerCrop()
                 .into(holder.iv_video);
-
-
-
 
         holder.ll_video.setOnClickListener(new View.OnClickListener() {
             @Override

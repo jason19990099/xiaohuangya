@@ -32,7 +32,7 @@
     <ImageView
         android:id="@+id/pic_top"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen_300" />
+        android:layout_height="450dp" />
 
        <TextView
            android:layout_margin="5dp"

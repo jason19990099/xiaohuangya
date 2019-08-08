@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.aigoule.starapp.R;
 import com.aigoule.starapp.event.GoWhereEvent;
 import com.aigoule.starapp.model.FirstpageModel;
+import com.aigoule.starapp.utils.LogUtil;
 import com.squareup.picasso.Picasso;
 import org.greenrobot.eventbus.EventBus;
 import java.util.List;
@@ -55,11 +56,11 @@ public class ListAllAdapter extends BaseAdapter {
             holder.tv_title=view.findViewById(R.id.tv_title);
             holder.gv_home=view.findViewById(R.id.gv_home);
             holder.rl_line=view.findViewById(R.id.rl_line);
-
             view.setTag(holder);
         }else{
             holder = (ViewHolder)view.getTag();
         }
+
         if (!data.get(position).getIcon_image().equals(""))
             Picasso.get().load(data.get(position).getIcon_image())
                     .placeholder(R.mipmap.ic_yellow)
@@ -68,7 +69,9 @@ public class ListAllAdapter extends BaseAdapter {
                     .fit()
                     .centerCrop()
                     .into(holder.iv_home);
+
         holder.tv_title.setText(data.get(position).getTitle());
+
         holder.iv_more.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,7 +89,11 @@ public class ListAllAdapter extends BaseAdapter {
             holder.rl_line.setVisibility(View.GONE);
             ThemeGradviewAdapter2 adapter = new ThemeGradviewAdapter2(data.get(position).getList(), context,open);
             holder.gv_home.setAdapter(adapter);
-        }else{
+        }else if (data.get(position).getPart()==3){
+            holder.rl_line.setVisibility(View.VISIBLE);
+            GradviewAdapter3 adapter = new GradviewAdapter3(data.get(position).getList(), context);
+            holder.gv_home.setAdapter(adapter);
+        }else {
             holder.rl_line.setVisibility(View.VISIBLE);
             GradviewAdapter2 adapter = new GradviewAdapter2(data.get(position).getList(), context);
             holder.gv_home.setAdapter(adapter);

@@ -37,9 +37,7 @@ public class FictionFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_fiction, null);
         unbinder = ButterKnife.bind(this, view);
-
         getFictiondetail("7");
-
         return view;
     }
 
