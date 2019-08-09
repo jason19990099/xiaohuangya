@@ -53,6 +53,7 @@ public class GradviewAdapter3 extends BaseAdapter {
             holder.tv_video=view.findViewById(R.id.tv_video);
             holder.iv_video=view.findViewById(R.id.iv_video);
             holder.ll_video=view.findViewById(R.id.ll_video);
+            holder.tv_wuma=view.findViewById(R.id.tv_wuma);
             view.setTag(holder);
         }else{
             holder = (ViewHolder)view.getTag();
@@ -67,6 +68,8 @@ public class GradviewAdapter3 extends BaseAdapter {
                 .fit()
                 .centerCrop()
                 .into(holder.iv_video);
+        if (null!=data.get(position).getHas_code())
+        holder.tv_wuma.setText(data.get(position).getHas_code());
 
         holder.ll_video.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,7 +87,7 @@ public class GradviewAdapter3 extends BaseAdapter {
     }
 
     private class ViewHolder {
-        private TextView tv_video;
+        private TextView tv_video,tv_wuma;
         private ImageView iv_video;
         private LinearLayout ll_video;
     }

@@ -123,6 +123,7 @@ public class FirstpageModel extends BaseModel {
             private String image_height;
             private String video_id;
             private int type;
+            private String has_code;
 
             public String getName() {
                 return name;
@@ -186,6 +187,14 @@ public class FirstpageModel extends BaseModel {
 
             public void setType(int type) {
                 this.type = type;
+            }
+
+            public String getHas_code() {
+                return has_code;
+            }
+
+            public void setHas_code(String has_code) {
+                this.has_code = has_code;
             }
         }
     }
