@@ -191,6 +191,28 @@
 
 
         <TextView
+            android:textSize="14sp"
+            android:text="推广码"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+        <EditText
+            android:textSize="15sp"
+            android:digits="0123456789qwertyuioplkjhgfdsazxcvbnm"
+            android:lines="1"
+            android:maxLength="20"
+            android:gravity="center_vertical"
+            android:layout_marginTop="@dimen/dimen_5"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:hint="如果没有可以不填写"
+            android:id="@+id/editext_tuiguang"
+            android:background="@drawable/editext_bg"/>
+
+
+        <TextView
             android:layout_marginTop="@dimen/dimen_5"
             android:textSize="14sp"
             android:text="邮箱"

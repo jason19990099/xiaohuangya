@@ -276,12 +276,13 @@ public class HttpRequest {
      * 用户注册
      */
     public void registe(Object tag, @Nullable String name, String email, String password, String password_confirm,
-                         HttpCallback<RegistMosdel> callback) {
+                        String tg,HttpCallback<RegistMosdel> callback) {
         RequestBody body = new RequestBodyBuilder()
                 .addParam("name", name)
                 .addParam("email", email)
                 .addParam("password", password)
                 .addParam("password_confirm", password_confirm)
+                .addParam("tg", tg)
                 .build();
         Call<RegistMosdel> call = mService.regist(body);
         putCall(tag, call);

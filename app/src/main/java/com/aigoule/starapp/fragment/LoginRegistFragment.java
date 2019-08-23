@@ -19,17 +19,12 @@ import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 import com.aigoule.starapp.R;
-import com.aigoule.starapp.activity.MainActivity;
 import com.aigoule.starapp.api.HttpCallback;
 import com.aigoule.starapp.api.HttpRequest;
 import com.aigoule.starapp.event.GoWhereEvent;
 import com.aigoule.starapp.event.LoginDataEvent;
-import com.aigoule.starapp.event.LoginEvent;
-import com.aigoule.starapp.event.SecondEvent;
-import com.aigoule.starapp.model.BaseModel;
 import com.aigoule.starapp.model.LoginModel;
 import com.aigoule.starapp.model.RegistMosdel;
-import com.aigoule.starapp.utils.LogUtil;
 import com.aigoule.starapp.utils.SharePreferencesUtil;
 
 import org.greenrobot.eventbus.EventBus;
@@ -75,6 +70,8 @@ public class LoginRegistFragment extends Fragment {
     LinearLayout llReg;
     @BindView(R.id.editext_regname)
     EditText editextRegname;
+    @BindView(R.id.editext_tuiguang)
+    EditText editextTuiguang;
     private View view;
 
     @Nullable
@@ -115,9 +112,9 @@ public class LoginRegistFragment extends Fragment {
         return view;
     }
 
-    @OnClick({R.id.bt_login, R.id.login_getbackpsw, R.id.login_reg,R.id.bt_reg})
+    @OnClick({R.id.bt_login, R.id.login_getbackpsw, R.id.login_reg, R.id.bt_reg})
     public void onViewClicked(View view) {
-        if (null==getActivity())  return;
+        if (null == getActivity()) return;
         switch (view.getId()) {
             case R.id.bt_login:
                 String name = etName.getText().toString().replace(" ", "");
@@ -126,16 +123,17 @@ public class LoginRegistFragment extends Fragment {
                     @RequiresApi(api = Build.VERSION_CODES.O)
                     @Override
                     public void onSuccess(LoginModel data) {
-                        if (data.isStatus()){
-                            Toast.makeText(getActivity(),"登录成功！",Toast.LENGTH_SHORT).show();
+                        if (data.isStatus()) {
+                            Toast.makeText(getActivity(), "登录成功！", Toast.LENGTH_SHORT).show();
                             EventBus.getDefault().postSticky(new GoWhereEvent(4));
                             EventBus.getDefault().postSticky(new LoginDataEvent(data.getData()));
                             HttpRequest.getInstance().setOid(String.valueOf(data.getData().getId()));
-                            SharePreferencesUtil.addString(getActivity(),"id",String.valueOf(data.getData().getId()));
-                        }else {
-                            Toast.makeText(getActivity(),data.getMessage(),Toast.LENGTH_SHORT).show();
+                            SharePreferencesUtil.addString(getActivity(), "id", String.valueOf(data.getData().getId()));
+                        } else {
+                            Toast.makeText(getActivity(), data.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }
+
                     @Override
                     public void onFailure(int msgCode, String errorMsg) {
                         Toast.makeText(getActivity(), errorMsg, Toast.LENGTH_SHORT).show();
@@ -149,21 +147,23 @@ public class LoginRegistFragment extends Fragment {
                 String email = editextMail.getText().toString().replace(" ", "");
                 String password = editextPsw.getText().toString().replace(" ", "");
                 String password_confirm = editextPswMakesure.getText().toString().replace(" ", "");
-                HttpRequest.getInstance().registe(LoginRegistFragment.this, name2, email, password,password_confirm,new HttpCallback<RegistMosdel>() {
+                String tg=editextTuiguang.getText().toString().replace(" ","");
+                HttpRequest.getInstance().registe(LoginRegistFragment.this, name2, email, password, password_confirm,tg, new HttpCallback<RegistMosdel>() {
                     @Override
                     public void onSuccess(RegistMosdel data) {
-                        if (data.isStatus()){
-                            Toast.makeText(getActivity(),"注册成功,请登录.",Toast.LENGTH_SHORT).show();
+                        if (data.isStatus()) {
+                            Toast.makeText(getActivity(), "注册成功,请登录.", Toast.LENGTH_SHORT).show();
                             radiogroup.check(R.id.rb_login);
                             rbLogin.setBackgroundColor(getResources().getColor(R.color.rb_yellow));
                             rbReg.setBackgroundColor(getResources().getColor(R.color.white));
                             llLogin.setVisibility(View.VISIBLE);
                             llReg.setVisibility(View.GONE);
 
-                        }else{
-                            Toast.makeText(getActivity(),data.getMessage(),Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getActivity(), data.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }
+
                     @Override
                     public void onFailure(int msgCode, String errorMsg) {
                         Toast.makeText(getActivity(), errorMsg, Toast.LENGTH_SHORT).show();
