@@ -171,7 +171,12 @@ public class PlayerActivity extends BaseActivity implements SwipeRefreshLayout.O
         }
 
         if (null != videoplayer) {
-            videoplayer.setUp(url, JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL, videoname);
+            if (videoname.length()>40){
+                videoplayer.setUp(url, JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL,videoname.substring(0,35));
+            }else{
+                videoplayer.setUp(url, JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL,videoname);
+            }
+
         }
         if (null != scrollView) {
             scrollView.fullScroll(View.FOCUS_UP);
